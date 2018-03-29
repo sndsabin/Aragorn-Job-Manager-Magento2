@@ -49,7 +49,7 @@ If you want to enable **linkedin apply** button on Job Apply Page. Go to
 ![View Setting](/Screenshots/view-setting-configuration.png "View Setting Configuration")
 
 ### Step 6 (Optional)
-#### For Terms and conditions, create a Terms and Condition page via Content > Page and use **terms** as route
+#### For Terms and conditions, create a Terms and Condition page via Content > Page and use *terms* as route
 
 ## Post Jobs (Admin Section)
 * Go to Aragorn > Job Manager > Add New Job
