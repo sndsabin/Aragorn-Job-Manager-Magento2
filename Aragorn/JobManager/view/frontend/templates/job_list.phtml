@@ -1,0 +1,72 @@
+<?php
+/**
+* Job listing
+*/
+
+?>
+<div class="job-list">
+    <div class="actions-toolbar">
+        <div class="primary">
+            <button type="button" class="button marginTop10" onclick="location.href = '<?php echo $this->getUrl('job/index/apply');?>'">
+                <span><?= $block->escapeHtml(__('GENERAL APPLICATION')) ?></span>
+            </button>
+        </div>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2"><?php echo __('job'); ?></th>
+                <th><?php echo __('published'); ?></th>
+                <th><?php echo __('status');  ?></th>
+            </tr>
+        </thead>
+        <?php if (count($block->getJobs()) > 0) : ?>
+            <?php foreach ($block->getJobs() as $job):?>
+
+                <tbody>
+
+                    <tr>
+                        <td colspan="2"><div class="styleBold"><a href="<?php echo $block->getURL(); ?>job/index/detail/id/<?php echo $job->getID(); ?>"><?php echo $job->getPosition(); ?></a></div></td>
+                        <td><div class="styleBold"><?php echo date('d.m.Y', strtotime($job->getCreatedAt())); ?></div></td>
+                        <td><div><?php echo $job->getStatus(); ?></div></td>
+                    </tr>
+                    <tr>
+                        <td class="tdLocation"><i class="fa fa-map-marker marginRight10" aria-hidden="true"></i><?php echo $job->getLocation(); ?></td>
+                        <td class="tdTime"><i class="fa fa-clock-o marginRight10" aria-hidden="true"></i><?php echo __(str_ireplace('from now', '', $job->getDeadlineDiffForHumans())); ?></td>
+                        <td class="tdJob"><i class="fa fa-graduation-cap marginRight10" aria-hidden="true"></i><?php echo $job->getEducation(); ?></td>
+                        <td><a href="<?php echo $block->getURL(); ?>job/index/detail/id/<?php echo $job->getID(); ?>"><?php echo __('VIEW'); ?> ></a></td>
+                    </tr>
+
+
+                </tbody>
+
+            <?php endforeach; ?>
+        <?php else: ?>
+                <tbody>
+                    <tr><td><?php echo __("No jobs posting for now. Please check back later");?></td></tr>
+                </tbody>
+        <?php endif; ?>
+    </table>
+    <?php if (!$block->isAjaxPaginationEnabled()): ?>
+        <div><?php echo $block->getPagerHtml(); ?></div>
+    <?php elseif ($block->getTotalPageNo() >= 2): ?>
+        <div class="no-ajax">
+            <button id="load-more" class="load-more-no-ajax">Load More</button>
+        </div>
+        <!-- For Ajax Pagination-->
+        <script type="text/x-magento-init">
+            {
+                "body" : {
+                     "ajaxLoadingJobManager":
+                            {
+                                "currentPage": "<?php echo $block->getCurrentPage(); ?>",
+                                "totalPages" : "<?php echo $block->getTotalPageNo(); ?>",
+                                "url": "<?php echo $this->getUrl('job') . "?p=";?>"
+                            }
+                }
+            }
+        </script>
+
+    <?php endif ?>
+</div>
+

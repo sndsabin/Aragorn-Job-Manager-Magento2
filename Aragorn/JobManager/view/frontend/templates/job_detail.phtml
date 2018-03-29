@@ -1,0 +1,49 @@
+<div class="back-to">
+    <a href="<?php echo $this->getUrl('job'); ?>" >< <?php echo __(' BACK TO JOB'); ?></a>
+</div>
+<?php
+
+if (in_array($block->getCurrentStore(), $block->getStores()) ||
+    in_array(0, $block->getStores())):
+$job = $block->getJobDetail();
+?>
+<div class="job-detail">
+    
+    <div class="other">
+    <div class="jobTopWrap">
+    <div class='jobTitlePart'>
+    <h1><?php echo $job->getPosition(); ?></h1>
+        <ul>
+            <li class="location"><i class="fa fa-map-marker marginRight10" aria-hidden="true"></i><?php echo $job->getLocation(); ?></li>
+            <li class="duration"><i class="fa fa-clock-o marginRight10" aria-hidden="true"></i><?php echo __(str_ireplace('from now', '', $job->getDeadlineDiffForHumans())); ?></li>
+            <li class="education"><i class="fa fa-graduation-cap marginRight10" aria-hidden="true"></i><?php echo $job->getEducation(); ?></li>
+        </ul>
+
+        </div>
+        <div class="apply-share">
+            <button class="action" onclick="location.href = '<?php echo $this->getUrl('job/index/apply') . 'id/' . $job->getID(); ?>'" type="button">
+                <span><?php echo __('Apply now'); ?></span>
+            </button>
+            <?php $body = __('Check out this job link '). $this->getUrl('*/*/*', ['_current' => true, '_use_rewrite' => true]); ?>
+            <a href="mailto:?subject=<?php echo __('I wanted you to see this job vacancy'); ?>&amp;body=<?php echo htmlspecialchars($body); ?>"
+               title="Share by Email">
+                   <?php echo __('Share page via e-mail'); ?>
+            </a>
+        </div>
+        </div>
+        <div class="job-content">
+            <?php echo $job->getDescription(); ?>
+            <button class="action" onclick="location.href = '<?php echo $this->getUrl('job/index/apply') . 'id/' . $job->getID(); ?>'" type="button">
+                <span><?php echo __('Apply'); ?></span>
+        </button>
+        </div>
+
+    </div>
+   
+</div>
+<?php else: ?>
+    <h2 class="genericFormStyling"><?php echo __('Sorry. The Job isn\'t available for current store.'); ?></h2>
+<?php endif; ?>
+
+
+

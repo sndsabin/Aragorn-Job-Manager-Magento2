@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Aragorn_JobManager::Job" sortOrder="10" title="Job">
+                    <resource id="Aragorn_JobManager::Job_save" sortOrder="10" title="Save Job"/>
+                    <resource id="Aragorn_JobManager::Job_delete" sortOrder="20" title="Delete Job"/>
+                    <resource id="Aragorn_JobManager::Job_update" sortOrder="30" title="Update Job"/>
+                    <resource id="Aragorn_JobManager::Job_view" sortOrder="40" title="View Job"/>
+                </resource>
+                <resource id="Aragorn_JobManager::Applicant" sortOrder="10" title="Applicant">
+                    <resource id="Aragorn_JobManager::Applicant_save" sortOrder="10" title="Save Applicant"/>
+                    <resource id="Aragorn_JobManager::Applicant_delete" sortOrder="20" title="Delete Applicant"/>
+                    <resource id="Aragorn_JobManager::Applicant_update" sortOrder="30" title="Update Applicant"/>
+                    <resource id="Aragorn_JobManager::Applicant_view" sortOrder="40" title="View Applicant"/>
+                </resource>
+
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Aragorn_JobManager::config_settings" title="Aragorn Job Manager"/>
+                        </resource>
+                    </resource>
+                </resource>
+
+            </resource>
+        </resources>
+    </acl>
+</config>

@@ -1,0 +1,14 @@
+<!--@subject {{trans "New Application Received"}} @-->
+{{template config_path="design/email/header_template"}}
+<div class="content">
+    <p><label>Name :</label> <span>{{var firstname}} {{var lastname}}</span></p>
+    <p><label>Application For :</label> <span>{{var position}}</span></p>
+    <p><label>Email :</label> <span>{{var email}}</span></p>
+    <p><label>Phone :</label> <span>{{var phone}}</span></p>
+    <p><label>Address :</label> <span>{{var address}}</span></p>
+    <p><label>City :</label> <span>{{var city}}</span></p>
+    <p><label>Country :</label> <span>{{var country}}</span></p>
+    <p><label>Zip Code :</label> <span>{{var zip_code}}</span></p>
+</div>
+{{template config_path="design/email/footer_template"}}
+

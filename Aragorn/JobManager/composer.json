@@ -1,0 +1,20 @@
+{
+    "name": "aragorn/module-jobmanager",
+    "description": "",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "sndsabin"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Aragorn\\JobManager\\": ""
+        }
+    }
+}

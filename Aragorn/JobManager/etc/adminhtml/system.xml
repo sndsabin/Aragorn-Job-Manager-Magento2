@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="jobmanager" translate="label" sortOrder="300">
+            <label>Job Manager </label>
+        </tab>
+        <section id="jobmanager_email" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Emails Settings</label>
+            <tab>jobmanager</tab>
+            <resource>Aragorn_JobManager::config_settings</resource>
+            <group id="email" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="applicant_admin_sender_name" translate="label" type="text" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sender Name</label>
+                    <comment>Name that will be used to send new application email</comment>
+                </field>
+                <field id="applicant_admin_sender_email" translate="label" type="text" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sender Email</label>
+                    <comment>Email that will be used to send new application email</comment>
+                </field>
+                <field id="applicant_admin_receiver_email" translate="label" type="text" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Receiver Email</label>
+                    <comment>Email that will receive new application email</comment>
+                </field>
+            </group>
+        </section>
+        <section id="jobmanager_linkedin" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Linkedin API Key</label>
+            <tab>jobmanager</tab>
+            <resource>Aragorn_JobManager::settings</resource>
+            <group id="api" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="linkedin_api_key" translate="label" type="text" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Linkedin API</label>
+                    <comment>Linkedin Client ID</comment>
+                </field>
+            </group>
+        </section>
+        <section id="jobmanager_view" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>View Settings</label>
+            <tab>jobmanager</tab>
+            <resource>Aragorn_JobManager::settings</resource>
+            <group id="view" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="page_size" translate="label" type="text" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Jobs Page Size</label>
+                    <comment>No. of jobs to show.(Default value is 4)</comment>
+                </field>
+                <field id="list_closed_jobs" translate="label" type="select" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>List Closed Jobs</label>
+                    <comment>If selected, jobs with closed status will also be displayed along with open</comment>
+                    <source_model>Aragorn\JobManager\Model\Config\Source\ViewConfigListMode</source_model>
+                </field>
+                <field id="enable_ajax_pagination" translate="label" type="select" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Ajax Pagination</label>
+                    <comment>If selected, pagination will be loaded via ajax</comment>
+                    <source_model>Aragorn\JobManager\Model\Config\Source\ViewConfigListMode</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

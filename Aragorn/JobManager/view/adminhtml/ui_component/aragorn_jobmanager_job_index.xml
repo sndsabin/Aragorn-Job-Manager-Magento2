@@ -1,0 +1,195 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="context" xsi:type="configurableObject">
+		<argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\Context</argument>
+		<argument name="namespace" xsi:type="string">aragorn_jobmanager_job_index</argument>
+	</argument>
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">aragorn_jobmanager_job_index.aragorn_jobmanager_job_grid_data_source</item>
+			<item name="deps" xsi:type="string">aragorn_jobmanager_job_index.aragorn_jobmanager_job_grid_data_source</item>
+		</item>
+		<item name="spinner" xsi:type="string">aragorn_jobmanager_job_columns</item>
+		<item name="buttons" xsi:type="array">
+			<item name="add" xsi:type="array">
+				<item name="name" xsi:type="string">add</item>
+				<item name="label" translate="true" xsi:type="string">Add new Job</item>
+				<item name="class" xsi:type="string">primary</item>
+				<item name="url" xsi:type="string">*/*/new</item>
+			</item>
+		</item>
+	</argument>
+	<dataSource name="aragorn_jobmanager_job_grid_data_source">
+		<argument name="dataProvider" xsi:type="configurableObject">
+			<argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
+			<argument name="name" xsi:type="string">aragorn_jobmanager_job_grid_data_source</argument>
+			<argument name="primaryFieldName" xsi:type="string">job_id</argument>
+			<argument name="requestFieldName" xsi:type="string">id</argument>
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+					<item name="update_url" path="mui/index/render" xsi:type="url"/>
+					<item name="storageConfig" xsi:type="array">
+						<item name="indexField" xsi:type="string">job_id</item>
+					</item>
+				</item>
+			</argument>
+		</argument>
+	</dataSource>
+	<listingToolbar name="listing_top">
+		<argument name="data" xsi:type="array">
+			<item name="config" xsi:type="array">
+				<item name="sticky" xsi:type="boolean">true</item>
+			</item>
+		</argument>
+		<bookmark name="bookmarks"/>
+		<columnsControls name="columns_controls"/>
+		<filters name="listing_filters">
+			<settings>
+				<templates>
+					<filters>
+						<select>
+							<param name="template" xsi:type="string">ui/grid/filters/elements/ui-select</param>
+							<param name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</param>
+						</select>
+					</filters>
+				</templates>
+			</settings>
+			<filterSelect name="store_id" provider="${ $.parentName }">
+				<settings>
+					<captionValue>0</captionValue>
+					<options class="Magento\Cms\Ui\Component\Listing\Column\Cms\Options"/>
+					<label translate="true">Store View</label>
+					<dataScope>store_id</dataScope>
+					<imports>
+						<link name="visible">componentType = column, index = ${ $.index }:visible</link>
+					</imports>
+				</settings>
+			</filterSelect>
+		</filters>
+		<paging name="listing_paging"/>
+	</listingToolbar>
+	<columns name="aragorn_jobmanager_job_columns">
+		<argument name="data" xsi:type="array">
+			<item name="config" xsi:type="array">
+				<item name="editorConfig" xsi:type="array">
+					<item name="selectProvider" xsi:type="string">aragorn_jobmanager_job_index.aragorn_jobmanager_job_index.aragorn_jobmanager_job_columns.ids</item>
+					<item name="enabled" xsi:type="boolean">true</item>
+					<item name="indexField" xsi:type="string">job_id</item>
+					<item name="clientConfig" xsi:type="array">
+						<item name="saveUrl" path="aragorn_jobmanager/Job/inlineEdit" xsi:type="url"/>
+						<item name="validateBeforeSave" xsi:type="boolean">false</item>
+					</item>
+				</item>
+				<item name="childDefaults" xsi:type="array">
+					<item name="fieldAction" xsi:type="array">
+						<item name="provider" xsi:type="string">aragorn_jobmanager_job_index.aragorn_jobmanager_job_index.aragorn_jobmanager_job_columns_editor</item>
+						<item name="target" xsi:type="string">startEdit</item>
+						<item name="params" xsi:type="array">
+							<item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+							<item name="1" xsi:type="boolean">true</item>
+						</item>
+					</item>
+				</item>
+			</item>
+		</argument>
+		<selectionsColumn name="ids">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="indexField" xsi:type="string">job_id</item>
+				</item>
+			</argument>
+		</selectionsColumn>
+		<column name="job_id">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="filter" xsi:type="string">text</item>
+					<item name="sorting" xsi:type="string">asc</item>
+					<item name="label" translate="true" xsi:type="string">ID</item>
+				</item>
+			</argument>
+		</column>
+		<column name="position">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="filter" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Position</item>
+					<item name="editor" xsi:type="array">
+						<item name="editorType" xsi:type="string">text</item>
+						<item name="validation" xsi:type="array">
+							<item name="required-entry" xsi:type="boolean">true</item>
+						</item>
+					</item>
+				</item>
+			</argument>
+		</column>
+
+		<column name="location">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="filter" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Location</item>
+					<item name="editor" xsi:type="array">
+						<item name="editorType" xsi:type="string">text</item>
+						<item name="validation" xsi:type="array">
+							<item name="required-entry" xsi:type="boolean">false</item>
+						</item>
+					</item>
+				</item>
+			</argument>
+		</column>
+		<column name="education">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="filter" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Education</item>
+					<item name="editor" xsi:type="array">
+						<item name="editorType" xsi:type="string">text</item>
+						<item name="validation" xsi:type="array">
+							<item name="required-entry" xsi:type="boolean">false</item>
+						</item>
+					</item>
+				</item>
+			</argument>
+		</column>
+
+		<column name="deadline">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="filter" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Deadline</item>
+					<item name="editor" xsi:type="array">
+						<item name="editorType" xsi:type="string">date</item>
+						<item name="validation" xsi:type="array">
+							<item name="required-entry" xsi:type="boolean">true</item>
+						</item>
+					</item>
+				</item>
+			</argument>
+		</column>
+		<column name="store_id" class="Magento\Store\Ui\Component\Listing\Column\Store">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+					<item name="sortable" xsi:type="boolean">false</item>
+					<item name="label" xsi:type="string" translate="true">Store View</item>
+				</item>
+			</argument>
+		</column>
+		<column name="status" component="Magento_Ui/js/grid/columns/select">
+			<settings>
+				<filter>select</filter>
+				<options class="Aragorn\JobManager\Ui\Component\Listing\Column\Status\Options"/>
+				<dataType>select</dataType>
+				<label translate="true">Status</label>
+			</settings>
+		</column>
+		<actionsColumn class="Aragorn\JobManager\Ui\Component\Listing\Column\JobActions" name="actions">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="indexField" xsi:type="string">job_id</item>
+				</item>
+			</argument>
+		</actionsColumn>
+	</columns>
+</listing>

@@ -1,0 +1,169 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">aragorn_jobmanager_job_form.job_form_data_source</item>
+			<item name="deps" xsi:type="string">aragorn_jobmanager_job_form.job_form_data_source</item>
+		</item>
+		<item name="label" translate="true" xsi:type="string">General Information</item>
+		<item name="config" xsi:type="array">
+			<item name="dataScope" xsi:type="string">data</item>
+			<item name="namespace" xsi:type="string">aragorn_jobmanager_job_form</item>
+		</item>
+		<item name="template" xsi:type="string">templates/form/collapsible</item>
+		<item name="buttons" xsi:type="array">
+			<item name="back" xsi:type="string">Aragorn\JobManager\Block\Adminhtml\Job\Edit\BackButton</item>
+			<item name="delete" xsi:type="string">Aragorn\JobManager\Block\Adminhtml\Job\Edit\DeleteButton</item>
+			<item name="save" xsi:type="string">Aragorn\JobManager\Block\Adminhtml\Job\Edit\SaveButton</item>
+			<item name="save_and_continue" xsi:type="string">Aragorn\JobManager\Block\Adminhtml\Job\Edit\SaveAndContinueButton</item>
+		</item>
+	</argument>
+	<dataSource name="job_form_data_source">
+		<argument name="dataProvider" xsi:type="configurableObject">
+			<argument name="class" xsi:type="string">Aragorn\JobManager\Model\Job\DataProvider</argument>
+			<argument name="name" xsi:type="string">job_form_data_source</argument>
+			<argument name="primaryFieldName" xsi:type="string">job_id</argument>
+			<argument name="requestFieldName" xsi:type="string">job_id</argument>
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="submit_url" path="*/*/save" xsi:type="url"/>
+				</item>
+			</argument>
+		</argument>
+		<argument name="data" xsi:type="array">
+			<item name="js_config" xsi:type="array">
+				<item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+			</item>
+		</argument>
+	</dataSource>
+	<fieldset name="General">
+		<argument name="data" xsi:type="array">
+			<item name="config" xsi:type="array">
+				<item name="label" xsi:type="string"/>
+			</item>
+		</argument>
+		<field name="position">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Position</item>
+					<item name="formElement" xsi:type="string">input</item>
+					<item name="source" xsi:type="string">Job</item>
+					<item name="sortOrder" xsi:type="number">10</item>
+					<item name="dataScope" xsi:type="string">position</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">true</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="location">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Location</item>
+					<item name="formElement" xsi:type="string">input</item>
+					<item name="source" xsi:type="string">Job</item>
+					<item name="sortOrder" xsi:type="number">20</item>
+					<item name="dataScope" xsi:type="string">location</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="education">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Education</item>
+					<item name="formElement" xsi:type="string">input</item>
+					<item name="source" xsi:type="string">Job</item>
+					<item name="sortOrder" xsi:type="number">30</item>
+					<item name="dataScope" xsi:type="string">education</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="description">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Description</item>
+					<item name="formElement" xsi:type="string">wysiwyg</item>
+					<item name="template" xsi:type="string">ui/form/field</item>
+					<item name="wysiwyg" xsi:type="boolean">true</item>
+
+					<item name="source" xsi:type="string">Job</item>
+					<item name="sortOrder" xsi:type="number">40</item>
+					<item name="dataScope" xsi:type="string">description</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field name="deadline">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Deadline</item>
+					<item name="formElement" xsi:type="string">date</item>
+					<item name="source" xsi:type="string">Job</item>
+					<item name="sortOrder" xsi:type="number">50</item>
+					<item name="dataScope" xsi:type="string">deadline</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">true</item>
+					</item>
+                    <item name="options" xsi:type="array">
+                        <item name="dateFormat" xsi:type="string">yyyy-MM-dd</item>
+                        <item name="timeFormat" xsi:type="string">HH:mm:ss</item>
+                        <item name="showsTime" xsi:type="boolean">true</item>
+                    </item>
+				</item>
+			</argument>
+		</field>
+		<field name="storeviews" formElement="multiselect">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">block</item>
+					<item name="default" xsi:type="number">0</item>
+				</item>
+			</argument>
+			<settings>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+				</validation>
+				<dataType>int</dataType>
+				<label translate="true">Store View</label>
+				<dataScope>store_id</dataScope>
+			</settings>
+			<formElements>
+				<multiselect>
+					<settings>
+						<options class="Magento\Cms\Ui\Component\Listing\Column\Cms\Options"/>
+					</settings>
+				</multiselect>
+			</formElements>
+		</field>
+		<field name="status">
+			<argument name="data" xsi:type="array">
+				<item name="options" xsi:type="object">Aragorn\JobManager\Ui\Component\Listing\Column\Status\Options</item>
+				<item name="config" xsi:type="array">
+					<item name="dataType" xsi:type="string">text</item>
+					<item name="label" translate="true" xsi:type="string">Status</item>
+					<item name="formElement" xsi:type="string">select</item>
+					<item name="source" xsi:type="string">Job</item>
+					<item name="sortOrder" xsi:type="number">80</item>
+					<item name="dataScope" xsi:type="string">status</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+	</fieldset>
+
+</form>

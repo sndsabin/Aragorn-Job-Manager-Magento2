@@ -1,0 +1,86 @@
+.jobListWrap {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+.job-list {
+    -webkit-box-flex: 4;
+    -ms-flex: 4;
+    flex: 4;
+}
+.actions-toolbar {
+    margin-bottom: 25px;
+}
+.jobTitlePart {
+    flex: 4;
+}
+.jobTitlePart h1 {
+    font-size: 3.4em;
+    text-align: center;
+    font-weight: 400;
+    border-bottom: 1px dashed #6e7e81;
+    margin: 0;
+    text-align: left;
+    padding-bottom: 10px;
+}
+.jobTitlePart ul {
+    display: flex;
+    margin: 0;
+    padding: 15px 0 0 0;
+}
+.jobTitlePart ul li {
+    list-style: none;
+    padding-right: 50px;
+}
+.apply-share {
+    flex: 1.5;
+    background: url('../images/background.jpg') repeat-x;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 0 35px;
+}
+.load-more-no-ajax {
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+    background: #149619;
+    font-size: 0.9em;
+    color: #ffffff;
+    text-transform: uppercase;
+    border: 0;
+    padding: 10px 32px;
+    font-weight: normal;
+}
+.job-list table thead tr {
+    font-weight: bold;
+    font-size: larger;
+    text-transform: uppercase;
+    color: #1c1c1c;
+    font-family: sans-serif, Arial, Verdana, "Trebuchet MS";
+}
+.job-list table tbody tr:first-child {
+    font-weight: bold;
+    border-bottom: 1px dashed #6e7e81;
+    padding: 0 0 13px 0;
+    min-height: 45px;
+}
+
+.marginTop10 {
+    margin-top: 10px;
+}
+.marginBottom10 {
+    margin-bottom: 10px;
+}
+.marginRight10 {
+    margin-right: 10px !important;
+}
+
+
+
+

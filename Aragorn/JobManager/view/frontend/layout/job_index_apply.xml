@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Aragorn_JobManager::css/main.css"/>
+        <link src="Aragorn_JobManager::js/linkedin.js"/>
+    </head>
+    <body>
+        <referenceBlock name="breadcrumbs">
+            <action method="addCrumb" >
+                <argument name="crumbName" xsi:type="string">Home</argument>
+                <argument name="crumbInfo" xsi:type="array">
+                    <item name="title" xsi:type="string"  translate="true">Home</item>
+                    <item name="label" xsi:type="string"  translate="true">Home</item>
+                    <item name="link" xsi:type="string"  translate="true">{{baseUrl}}</item>
+                </argument>
+            </action>
+            <action method="addCrumb">
+                <argument name="crumbName" xsi:type="string">Job</argument>
+                <argument name="crumbInfo" xsi:type="array">
+                    <item name="title" xsi:type="string"  translate="true">Job</item>
+                    <item name="label" xsi:type="string"  translate="true">Job</item>
+                    <item name="link" xsi:type="string"  translate="true">{{baseUrl}}job</item>
+                </argument>
+            </action>
+
+        </referenceBlock>
+        <referenceContainer name="content">
+            <block class="Aragorn\JobManager\Block\Index\JobApply" name="job.apply" template="Aragorn_JobManager::job_apply.phtml" />
+        </referenceContainer>
+    </body>
+</page>
