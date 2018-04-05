@@ -2,7 +2,7 @@
 
 ## Introduction
 
-> **Aragorn Job Manager** is Magento 2 jobs and recuirtment extension that empowers to you to create a seperate job section on your magento store.  It  allows you to add jobs and interact directly with job seekers.
+> **Aragorn Job Manager** is Magento 2 jobs and recruitment extension that empowers to you to create a seperate job section on your magento store.  It  allows you to add jobs and interact directly with job seekers.
 
 ## Features
 
