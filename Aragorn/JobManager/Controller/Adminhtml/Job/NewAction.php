@@ -25,6 +25,7 @@ class NewAction extends \Aragorn\JobManager\Controller\Adminhtml\Job
 {
 
     protected $resultForwardFactory;
+    const ADMIN_RESOURCE = 'Aragorn_JobManager::Job_save';
 
     /**
      * @param \Magento\Backend\App\Action\Context $context
@@ -50,5 +51,14 @@ class NewAction extends \Aragorn\JobManager\Controller\Adminhtml\Job
         /** @var \Magento\Framework\Controller\Result\Forward $resultForward */
         $resultForward = $this->resultForwardFactory->create();
         return $resultForward->forward('edit');
+    }
+
+    /**
+     * Check Access Control Permission
+     * @return bool
+     */
+    protected function _isAllowed()
+    {
+        return $this->_authorization->isAllowed(self::ADMIN_RESOURCE);
     }
 }

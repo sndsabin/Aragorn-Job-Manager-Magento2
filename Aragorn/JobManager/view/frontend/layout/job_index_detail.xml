@@ -6,6 +6,7 @@
         <css src="Aragorn_JobManager::css/font-awesome.min.css"/>
     </head>
     <body>
+        <referenceBlock name="page.main.title" remove="true" />
         <referenceBlock name="breadcrumbs">
             <action method="addCrumb" >
                 <argument name="crumbName" xsi:type="string">Home</argument>

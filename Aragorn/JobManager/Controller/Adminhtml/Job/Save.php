@@ -27,6 +27,7 @@ class Save extends \Magento\Backend\App\Action
 {
 
     protected $dataPersistor;
+    const ADMIN_RESOURCE = 'Aragorn_JobManager::Job_save';
 
     /**
      * @param \Magento\Backend\App\Action\Context $context
@@ -80,5 +81,14 @@ class Save extends \Magento\Backend\App\Action
             return $resultRedirect->setPath('*/*/edit', ['job_id' => $this->getRequest()->getParam('job_id')]);
         }
         return $resultRedirect->setPath('*/*/');
+    }
+
+    /**
+     * Check Access Control Permission
+     * @return bool
+     */
+    protected function _isAllowed()
+    {
+        return $this->_authorization->isAllowed(self::ADMIN_RESOURCE);
     }
 }

@@ -47,9 +47,9 @@ class Apply extends Job
     public function execute()
     {
         //Dynamic Breadcrumb creation
-        $resultpage = $this->createBreadCrumb();
+        $resultPage = $this->createBreadCrumb();
 
-        return $resultpage;
+        return $resultPage;
     }
 
     /**
@@ -57,18 +57,20 @@ class Apply extends Job
      */
     public function createBreadCrumb()
     {
-        $resultpage = $this->resultPageFactory->create();
+        $resultPage = $this->resultPageFactory->create();
         $id = $this->getRequest()->getParam('id');
         $jobPosition = 'General Application';
         if ($id) {
             $jobPosition = $this->getJobPosition($id);
         }
-        $breadcrumbs = $resultpage->getLayout()->getBlock("breadcrumbs");
+        $breadcrumbs = $resultPage->getLayout()->getBlock("breadcrumbs");
         $breadcrumbs->addCrumb($jobPosition, array(
             "label" => $jobPosition,
             "title" => $jobPosition,
         ));
-        return $resultpage;
+
+
+        return $resultPage;
     }
 
     /**

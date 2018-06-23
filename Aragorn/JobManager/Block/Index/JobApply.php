@@ -120,9 +120,10 @@ class JobApply extends Template
 
     /**
      * Check if the deadline is not over
+     * Returns True for General Application
      * @return bool
      */
-    public function isStillOpen() {
+    public function isDeadlineNotOver() {
         $id =  $this->request->getParam('id');
 
         if ($id) {
@@ -130,6 +131,24 @@ class JobApply extends Template
             $difference = strtotime($deadline) - strtotime(date('Y-m-d h:i:sa'));
 
             return ($difference >= 0) ? true : false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Check if the job status is open
+     * Returns True for General Application
+     * @return bool
+     */
+    public function isStatusOpen()
+    {
+        $id =  $this->request->getParam('id');
+
+        if ($id) {
+            $status = $this->jobRepository->getById($id)->getStatus();
+            
+            return $status == 'Open';
         }
 
         return true;
@@ -173,6 +192,17 @@ class JobApply extends Template
     public function getCurrentStore()
     {
         return $this->storeManager->getStore()->getId();
+    }
+
+    /**
+     * Prepares layout and set the title
+     * @return $this
+     */
+    protected function _prepareLayout()
+    {
+        $this->pageConfig->getTitle()->set($this->getJobTitle());
+
+        return parent::_prepareLayout();
     }
 
 }

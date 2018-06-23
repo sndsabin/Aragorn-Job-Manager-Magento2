@@ -1,221 +1,226 @@
 <?php $postedData = $block->getPostedValue(); ?>
 <div class="back-to">
-    <a href="<?php echo $this->getUrl('job'); ?>" >< <?php echo __(' BACK TO JOB'); ?></a>
+    <a href="<?php echo $this->getUrl('job'); ?>">< <?php echo __(' BACK TO JOB'); ?></a>
 </div>
 
 <div class="column main">
     <?php
     if (
-            in_array($block->getCurrentStore(), $block->getStores()) || // for respective store view
-            in_array(0, $block->getStores()) || // for All Stores
-            $block->getStores() === [] // for General Application
+        in_array($block->getCurrentStore(), $block->getStores()) || // for respective store view
+        in_array(0, $block->getStores()) || // for All Stores
+        $block->getStores() === [] // for General Application
     ):
-        if ($block->isStillOpen()):
-            ?>
-            <div class="application-form">
-                <h1><?php echo $block->getJobTitle(); ?></h1>
-                <h2><?php echo __('Apply for this vacancy'); ?></h2>
-                <script type="text/javascript" src="//platform.linkedin.com/in.js">
-                    api_key: <?php echo $block->getLinkedInAPIKey() . PHP_EOL; ?>
-                    scope: r_basicprofile
-                    r_emailaddress
-                    onLoad: onLinkedInLoad
-                </script>
-                <script type="in/Login"></script>
+        if ($block->isStatusOpen()):
+            if ($block->isDeadlineNotOver()):
+                ?>
+                <div class="application-form">
+                    <h1><?php echo $block->getJobTitle(); ?></h1>
+                    <h2><?php echo __('Apply for this vacancy'); ?></h2>
+                    <script type="text/javascript" src="//platform.linkedin.com/in.js">
+                        api_key: <?php echo $block->getLinkedInAPIKey() . PHP_EOL; ?>
+                            scope: r_basicprofile
+                        r_emailaddress
+                        onLoad: onLinkedInLoad
+                    </script>
+                    <script type="in/Login"></script>
 
 
-                <form class="form" action="<?php echo $block->getFormAction() ?>"
-                      id="job-application-from"
-                      method="post"
-                      enctype="multipart/form-data"
-                      data-mage-init='{"validation":{}}'>
-                    <?php echo $block->getBlockHtml('formkey'); ?>
-                    <div class="field required">
-                        <div class="control">
-                            <em class="holder"><?= $block->escapeHtmlAttr(__('e-mail')) ?> <em >*</em> </em>
-                            <input
-                                id="applicant-email"
-                                type="text"
-                                name="email"
-                                value="<?php echo isset($postedData['email']) ? $postedData['email'] : '' ?>"
-                                data-validate='{"required":true, "email":true}'
-                                placeholder=""
-                                class="input-text">
-                            <span><?php echo __('john.smith@example.com'); ?></span>
+                    <form class="form" action="<?php echo $block->getFormAction() ?>"
+                          id="job-application-from"
+                          method="post"
+                          enctype="multipart/form-data"
+                          data-mage-init='{"validation":{}}'>
+                        <?php echo $block->getBlockHtml('formkey'); ?>
+                        <div class="field required">
+                            <div class="control">
+                                <em class="holder"><?= $block->escapeHtmlAttr(__('e-mail')) ?> <em>*</em> </em>
+                                <input
+                                        id="applicant-email"
+                                        type="text"
+                                        name="email"
+                                        value="<?php echo isset($postedData['email']) ? $postedData['email'] : '' ?>"
+                                        data-validate='{"required":true, "email":true}'
+                                        placeholder=""
+                                        class="input-text">
+                                <span><?php echo __('john.doe@example.com'); ?></span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="field required">
-                        <div class="control">
-                            <em class="holder"><?= $block->escapeHtmlAttr(__('confirm e-mail')) ?> <em >*</em> </em>
-                            <input
-                                id="confirm-email"
-                                type="text"
-                                name="confirm_email"
-                                value="<?php echo isset($postedData['confirm_email']) ? $postedData['confirm_email'] : '' ?>"
-                                data-validate='{"required":true, "email":true, "equalTo": "#applicant-email"}'
-                                placeholder=""
-                                class="input-text">
-                            <span><?php echo __('john.smith@example.com'); ?></span>
+                        <div class="field required">
+                            <div class="control">
+                                <em class="holder"><?= $block->escapeHtmlAttr(__('confirm e-mail')) ?> <em>*</em> </em>
+                                <input
+                                        id="confirm-email"
+                                        type="text"
+                                        name="confirm_email"
+                                        value="<?php echo isset($postedData['confirm_email']) ? $postedData['confirm_email'] : '' ?>"
+                                        data-validate='{"required":true, "email":true, "equalTo": "#applicant-email"}'
+                                        placeholder=""
+                                        class="input-text">
+                                <span><?php echo __('john.doe@example.com'); ?></span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="field required">
-                        <div class="control">
-                            <em class="holder"><?= $block->escapeHtmlAttr(__('first name')) ?> <em >*</em> </em>
-                            <input
-                                id="firstname"
-                                type="text"
-                                name="first_name"
-                                value="<?php echo isset($postedData['first_name']) ? $postedData['first_name'] : '' ?>"
-                                data-validate='{"required":true}'
-                                placeholder=""
-                                class="input-text">
+                        <div class="field required">
+                            <div class="control">
+                                <em class="holder"><?= $block->escapeHtmlAttr(__('first name')) ?> <em>*</em> </em>
+                                <input
+                                        id="firstname"
+                                        type="text"
+                                        name="first_name"
+                                        value="<?php echo isset($postedData['first_name']) ? $postedData['first_name'] : '' ?>"
+                                        data-validate='{"required":true}'
+                                        placeholder=""
+                                        class="input-text">
+                            </div>
                         </div>
-                    </div>
-                    <div class="field required">
-                        <div class="control">
-                            <em class="holder"><?= $block->escapeHtmlAttr(__('surname')) ?> <em >*</em> </em>
-                            <input
-                                id="lastname"
-                                type="text"
-                                name="last_name"
-                                value="<?php echo isset($postedData['last_name']) ? $postedData['last_name'] : '' ?>"
-                                data-validate='{"required":true}'
-                                placeholder=""
-                                class="input-text">
+                        <div class="field required">
+                            <div class="control">
+                                <em class="holder"><?= $block->escapeHtmlAttr(__('surname')) ?> <em>*</em> </em>
+                                <input
+                                        id="lastname"
+                                        type="text"
+                                        name="last_name"
+                                        value="<?php echo isset($postedData['last_name']) ? $postedData['last_name'] : '' ?>"
+                                        data-validate='{"required":true}'
+                                        placeholder=""
+                                        class="input-text">
+                            </div>
                         </div>
-                    </div>
-                    <div class="field required">
-                        <div class="control">
-                            <em class="holder"><?= $block->escapeHtmlAttr(__('phone/mobile')) ?> <em >*</em> </em>
-                            <input
-                                id="phone"
-                                type="text"
-                                name="phone"
-                                value="<?php echo isset($postedData['phone']) ? $postedData['phone'] : '' ?>"
-                                data-validate='{"required":true, "validate-number":true}'
-                                placeholder=""
-                                class="input-text">
-                            <span><?php echo __('Example ( 0182398200 )'); ?></span>
+                        <div class="field required">
+                            <div class="control">
+                                <em class="holder"><?= $block->escapeHtmlAttr(__('phone/mobile')) ?> <em>*</em> </em>
+                                <input
+                                        id="phone"
+                                        type="text"
+                                        name="phone"
+                                        value="<?php echo isset($postedData['phone']) ? $postedData['phone'] : '' ?>"
+                                        data-validate='{"required":true, "validate-number":true}'
+                                        placeholder=""
+                                        class="input-text">
+                            </div>
                         </div>
-                    </div>
-                    <div class="field required">
-                        <div class="control">
-                            <em class="holder"><?= $block->escapeHtmlAttr(__('address')) ?> <em >*</em> </em>
-                            <input
-                                type="text"
-                                name="address"
-                                value="<?php echo isset($postedData['address']) ? $postedData['address'] : '' ?>"
-                                data-validate='{"required":true}'
-                                placeholder=""
-                                class="input-text">
+                        <div class="field required">
+                            <div class="control">
+                                <em class="holder"><?= $block->escapeHtmlAttr(__('address')) ?> <em>*</em> </em>
+                                <input
+                                        type="text"
+                                        name="address"
+                                        value="<?php echo isset($postedData['address']) ? $postedData['address'] : '' ?>"
+                                        data-validate='{"required":true}'
+                                        placeholder=""
+                                        class="input-text">
+                            </div>
                         </div>
-                    </div>
-                    <div class="field required">
-                        <div class="control">
-                            <em class="holder"><?= $block->escapeHtmlAttr(__('zip code')) ?> <em >*</em> </em>
-                            <input
-                                type="text"
-                                name="zip_code"
-                                value="<?php echo isset($postedData['zip_code']) ? $postedData['zip_code'] : '' ?>"
-                                data-validate='{"required":true}'
-                                placeholder=""
-                                class="input-text">
-                            <span><?php echo __('Example ( 3344AG ) '); ?></span>
+                        <div class="field required">
+                            <div class="control">
+                                <em class="holder"><?= $block->escapeHtmlAttr(__('zip code')) ?> <em>*</em> </em>
+                                <input
+                                        type="text"
+                                        name="zip_code"
+                                        value="<?php echo isset($postedData['zip_code']) ? $postedData['zip_code'] : '' ?>"
+                                        data-validate='{"required":true}'
+                                        placeholder=""
+                                        class="input-text">
+                            </div>
                         </div>
-                    </div>
-                    <div class="field required">
-                        <div class="control">
-                            <em class="holder"><?= $block->escapeHtmlAttr(__('city')) ?> <em >*</em> </em>
-                            <input
-                                type="text"
-                                name="city"
-                                value="<?php echo isset($postedData['city']) ? $postedData['city'] : '' ?>"
-                                data-validate='{"required":true}'
-                                placeholder=""
-                                class="input-text">
+                        <div class="field required">
+                            <div class="control">
+                                <em class="holder"><?= $block->escapeHtmlAttr(__('city')) ?> <em>*</em> </em>
+                                <input
+                                        type="text"
+                                        name="city"
+                                        value="<?php echo isset($postedData['city']) ? $postedData['city'] : '' ?>"
+                                        data-validate='{"required":true}'
+                                        placeholder=""
+                                        class="input-text">
+                            </div>
                         </div>
-                    </div>
-                    <div class="field required">
-                        <div class="control errorStylingProp">
-                            <em class="holder"><?php echo $block->escapeHtmlAttr(__('country')) ?> <em >*</em> </em>
-                            <select name="country" id="country" id="country" data-validate='{"required":true}'>
-                                <option value="">-- <?php echo $block->escapeHtmlAttr(__('Select Country')) ?> --</option>
-                                <?php
-                                foreach ($block->getCountriesList() as $key => $value):
-                                    if ($value['value'] === '' || $value['label'] === '') {
-                                        continue;
-                                    }
-                                    ?>
-                                    <option value="<?php echo $value['label'] ?>" <?php echo (isset($postedData['country']) && $postedData['country'] == $value['label']) ? 'selected' : '' ?>>
-                                        <?php echo $value['label'] ?>
+                        <div class="field required">
+                            <div class="control errorStylingProp">
+                                <em class="holder"><?php echo $block->escapeHtmlAttr(__('country')) ?> <em>*</em> </em>
+                                <select name="country" id="country" id="country" data-validate='{"required":true}'>
+                                    <option value="">-- <?php echo $block->escapeHtmlAttr(__('Select Country')) ?>--
                                     </option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="field required">
-                        <h3 class="label"><?= $block->escapeHtml(__('CV document')) ?></h3>
-                        <div class="control">
-
-
-                            <div class="fileUpload ">
-                                <label><?= $block->escapeHtml(__('choose file/upload')) ?></label>
-                                <input
-                                    type="file"
-                                    name="cv"
-                                    data-validate='{"required":true}'
-                                    placeholder=""
-                                    class="input-text upload">
+                                    <?php
+                                    foreach ($block->getCountriesList() as $key => $value):
+                                        if ($value['value'] === '' || $value['label'] === '') {
+                                            continue;
+                                        }
+                                        ?>
+                                        <option value="<?php echo $value['label'] ?>" <?php echo (isset($postedData['country']) && $postedData['country'] == $value['label']) ? 'selected' : '' ?>>
+                                            <?php echo $value['label'] ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
                             </div>
-                            <span><?php echo __('supported file types: doc, docx, pdf, jpg, png'); ?><em >*</em></span>
                         </div>
-                        <p class="fileName"></p>
-                    </div>
-                    <div class="field required">
-                        <h3 class="label"><?= $block->escapeHtml(__('Personal letter')) ?></h3>
-                        <div class="control">
 
-                            <div class="fileUpload ">
-                                <label><?= $block->escapeHtml(__('choose file/upload')) ?></label>
-                                <input
-                                    type="file"
-                                    name="letter"
-                                    data-validate='{"required":true}'
-                                    placeholder=""
-                                    class="input-text upload">
+                        <div class="field required">
+                            <h3 class="label"><?= $block->escapeHtml(__('CV document')) ?></h3>
+                            <div class="control">
+
+
+                                <div class="fileUpload ">
+                                    <label><?= $block->escapeHtml(__('choose file/upload')) ?></label>
+                                    <input
+                                            type="file"
+                                            name="cv"
+                                            data-validate='{"required":true}'
+                                            placeholder=""
+                                            class="input-text upload">
+                                </div>
+                                <span><?php echo __('supported file types: doc, docx, pdf, jpg, png'); ?>
+                                    <em>*</em></span>
                             </div>
-                            <span><?php echo __('supported file types: doc, docx, pdf, jpg, png'); ?><em >*</em></span>
+                            <p class="fileName"></p>
                         </div>
-                        <p class="fileName"></p>
-                    </div>
-                    <div class="field required marginTop15">
-                        <div class="control termsAgreement">
-                            <input
-                                type="checkbox"
-                                name="terms"
-                                data-validate='{"required":true}'
-                                id="terms"
-                                class="input-text">
-                            
-                            <label for='terms'>
-                            <?php echo sprintf(__('I agree with the <a href="%s">stated terms</a>'), $this->getUrl('terms'))  ?></label>
+                        <div class="field required">
+                            <h3 class="label"><?= $block->escapeHtml(__('Personal letter')) ?></h3>
+                            <div class="control">
+
+                                <div class="fileUpload ">
+                                    <label><?= $block->escapeHtml(__('choose file/upload')) ?></label>
+                                    <input
+                                            type="file"
+                                            name="letter"
+                                            data-validate='{"required":true}'
+                                            placeholder=""
+                                            class="input-text upload">
+                                </div>
+                                <span><?php echo __('supported file types: doc, docx, pdf, jpg, png'); ?>
+                                    <em>*</em></span>
+                            </div>
+                            <p class="fileName"></p>
                         </div>
-                    </div>
-                    <div class="field">
-                        <div class="marginTop10">
-                            <button type="submit">
-                                <span><?php echo $block->escapeHtml(__('Submit')) ?></span>
-                            </button>
+                        <div class="field required marginTop15">
+                            <div class="control termsAgreement">
+                                <input
+                                        type="checkbox"
+                                        name="terms"
+                                        data-validate='{"required":true}'
+                                        id="terms"
+                                        class="input-text">
+
+                                <label for='terms'>
+                                    <?php echo sprintf(__('I agree with the <a href="%s">stated terms</a>'), $this->getUrl('terms')) ?></label>
+                            </div>
                         </div>
-                    </div>
-                </form>
-            </div>
+                        <div class="field">
+                            <div class="marginTop10">
+                                <button type="submit">
+                                    <span><?php echo $block->escapeHtml(__('Submit')) ?></span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            <?php else: ?>
+                <h2><?php echo __('Sorry,The deadline has crossed'); ?></h2>
+            <?php endif; ?>
         <?php else: ?>
-            <h2><?php echo __('Sorry. The Deadline has crossed.'); ?></h2>
-            <?php endif;
-        else: ?>
+            <h2><?php echo __('Sorry. The Job is closed.') ?></h2>
+        <?php endif;
+    else: ?>
         <h2><?php echo __('Sorry. The Job isn\'t available for current store.'); ?></h2>
-<?php endif; ?>
+    <?php endif; ?>
 
 </div>

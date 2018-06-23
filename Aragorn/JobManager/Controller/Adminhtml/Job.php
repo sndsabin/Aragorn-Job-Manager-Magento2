@@ -29,7 +29,7 @@ abstract class Job extends Action
 {
 
     protected $_coreRegistry;
-    const ADMIN_RESOURCE = 'Aragorn_JobManager::top_level';
+    const ADMIN_RESOURCE = 'Aragorn_JobManager::Job';
 
     /**
      * @param Context $context
@@ -50,9 +50,17 @@ abstract class Job extends Action
      */
     public function initPage($resultPage)
     {
-        $resultPage->setActiveMenu(self::ADMIN_RESOURCE)
-            ->addBreadcrumb(__('Aragorn'), __('Aragorn'))
+        $resultPage->addBreadcrumb(__('Aragorn'), __('Aragorn'))
             ->addBreadcrumb(__('Job Manager'), __('Job Manager'));
         return $resultPage;
+    }
+
+    /**
+     * Check Access Control Permission
+     * @return bool
+     */
+    protected function _isAllowed()
+    {
+        return $this->_authorization->isAllowed(self::ADMIN_RESOURCE);
     }
 }

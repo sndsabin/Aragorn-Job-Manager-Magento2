@@ -25,6 +25,7 @@ class InlineEdit extends \Magento\Backend\App\Action
 {
 
     protected $jsonFactory;
+    const ADMIN_RESOURCE = 'Aragorn_JobManager::Job_update';
 
     /**
      * @param \Magento\Backend\App\Action\Context $context
@@ -74,5 +75,14 @@ class InlineEdit extends \Magento\Backend\App\Action
             'messages' => $messages,
             'error' => $error
         ]);
+    }
+
+    /**
+     * Check Access Control Permission
+     * @return bool
+     */
+    protected function _isAllowed()
+    {
+        return $this->_authorization->isAllowed(self::ADMIN_RESOURCE);
     }
 }

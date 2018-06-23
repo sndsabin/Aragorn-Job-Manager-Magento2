@@ -1,8 +1,9 @@
 <?xml version="1.0" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
 	<menu>
-		<add id="Aragorn::top_level" module="Aragorn_JobManager" resource="Magento_Backend::content" sortOrder="9999" title="Aragorn"/>
-		<add action="aragorn_jobmanager/job/index" id="Aragorn::aragorn_jobmanager_job" module="Aragorn_JobManager" parent="Aragorn::top_level" resource="Magento_Backend::content" sortOrder="9999" title="Job Manager"/>
-		<add action="aragorn_jobmanager/applicant/index" id="Aragorn::aragorn_jobmanager_applicant" module="Aragorn_JobManager" parent="Aragorn::top_level" resource="Magento_Backend::content" sortOrder="9999" title="Job Applicants"/>
+		<add id="Aragorn::top_level" module="Aragorn_JobManager" resource="Magento_Backend::admin" sortOrder="9999" title="Aragorn"/>
+		<add action="aragorn_jobmanager/job/index" id="Aragorn::aragorn_jobmanager_job" module="Aragorn_JobManager" parent="Aragorn::top_level" resource="Aragorn_JobManager::Job" sortOrder="9999" title="Job Manager"/>
+		<add action="aragorn_jobmanager/applicant/index" id="Aragorn::aragorn_jobmanager_applicant" module="Aragorn_JobManager" parent="Aragorn::top_level" resource="Aragorn_JobManager::Applicant" sortOrder="9999" title="Job Applicants"/>
 	</menu>
 </config>
+

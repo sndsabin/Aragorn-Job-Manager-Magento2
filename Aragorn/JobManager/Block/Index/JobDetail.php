@@ -86,4 +86,15 @@ class JobDetail extends Template
     {
         return $this->storeManager->getStore()->getId();
     }
+
+    /**
+     * Prepares layout and set the title
+     * @return $this
+     */
+    protected function _prepareLayout()
+    {
+        $this->pageConfig->getTitle()->set($this->getJobDetail()->getPosition());
+
+        return parent::_prepareLayout();
+    }
 }

@@ -25,6 +25,7 @@ class Edit extends \Aragorn\JobManager\Controller\Adminhtml\Job
 {
 
     protected $resultPageFactory;
+    const ADMIN_RESOURCE = 'Aragorn_JobManager::Job_update';
 
     /**
      * @param \Magento\Backend\App\Action\Context $context
@@ -73,5 +74,14 @@ class Edit extends \Aragorn\JobManager\Controller\Adminhtml\Job
         $resultPage->getConfig()->getTitle()->prepend(__('Jobs'));
         $resultPage->getConfig()->getTitle()->prepend($model->getId() ? $model->getTitle() : __('New Job'));
         return $resultPage;
+    }
+
+    /**
+     * Check Access Control Permission
+     * @return bool
+     */
+    protected function _isAllowed()
+    {
+        return $this->_authorization->isAllowed(self::ADMIN_RESOURCE);
     }
 }

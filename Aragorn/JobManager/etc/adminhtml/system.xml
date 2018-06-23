@@ -29,7 +29,7 @@
             <class>separator-top</class>
             <label>Linkedin API Key</label>
             <tab>jobmanager</tab>
-            <resource>Aragorn_JobManager::settings</resource>
+            <resource>Aragorn_JobManager::config_settings</resource>
             <group id="api" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>General</label>
                 <field id="linkedin_api_key" translate="label" type="text" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -42,7 +42,7 @@
             <class>separator-top</class>
             <label>View Settings</label>
             <tab>jobmanager</tab>
-            <resource>Aragorn_JobManager::settings</resource>
+            <resource>Aragorn_JobManager::config_settings</resource>
             <group id="view" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>General</label>
                 <field id="page_size" translate="label" type="text" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">

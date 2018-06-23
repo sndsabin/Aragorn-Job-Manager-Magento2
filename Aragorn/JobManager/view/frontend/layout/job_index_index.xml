@@ -6,6 +6,7 @@
         <css src="Aragorn_JobManager::css/font-awesome.min.css"/>
     </head>
     <body>
+        <referenceBlock name="page.main.title" remove="true" />
         <referenceContainer name="content">
             <block class="Aragorn\JobManager\Block\Index\JobList" name="job.list" template="Aragorn_JobManager::job_list.phtml" />
         </referenceContainer>

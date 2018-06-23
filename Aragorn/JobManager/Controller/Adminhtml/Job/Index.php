@@ -25,6 +25,7 @@ class Index extends \Magento\Backend\App\Action
 {
 
     protected $resultPageFactory;
+    const ADMIN_RESOURCE = 'Aragorn_JobManager::Job_view';
 
     /**
      * Constructor
@@ -50,5 +51,14 @@ class Index extends \Magento\Backend\App\Action
         $resultPage = $this->resultPageFactory->create();
             $resultPage->getConfig()->getTitle()->prepend(__("Job Manager"));
             return $resultPage;
+    }
+
+    /**
+     * Check Access Control Permission
+     * @return bool
+     */
+    protected function _isAllowed()
+    {
+        return $this->_authorization->isAllowed(self::ADMIN_RESOURCE);
     }
 }

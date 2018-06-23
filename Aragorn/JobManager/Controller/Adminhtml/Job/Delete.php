@@ -23,6 +23,7 @@ namespace Aragorn\JobManager\Controller\Adminhtml\Job;
 
 class Delete extends \Aragorn\JobManager\Controller\Adminhtml\Job
 {
+    const ADMIN_RESOURCE = 'Aragorn_JobManager::Job_delete';
 
     /**
      * Delete action
@@ -56,5 +57,14 @@ class Delete extends \Aragorn\JobManager\Controller\Adminhtml\Job
         $this->messageManager->addErrorMessage(__('We can\'t find a Job to delete.'));
         // go to grid
         return $resultRedirect->setPath('*/*/');
+    }
+
+    /**
+     * Check Access Control Permission
+     * @return bool
+     */
+    protected function _isAllowed()
+    {
+        return $this->_authorization->isAllowed(self::ADMIN_RESOURCE);
     }
 }

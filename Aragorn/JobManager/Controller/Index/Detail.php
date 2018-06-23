@@ -36,14 +36,15 @@ class Detail extends Job
      * @return \Magento\Framework\View\Result\Page
      */
     public function execute() {
-        $resultpage = $this->resultPageFactory->create();
+        $resultPage = $this->resultPageFactory->create();
         $jobDetail = $this->jobRepository->getById($this->getRequest()->getParam('id'));
-        $breadcrumbs =  $resultpage->getLayout()->getBlock("breadcrumbs");
+        $breadcrumbs =  $resultPage->getLayout()->getBlock("breadcrumbs");
         $breadcrumbs->addCrumb($jobDetail->getPosition(), array(
             "label" => $jobDetail->getPosition(),
             "title" => $jobDetail->getPosition(),
        ));
-        return $resultpage;
+
+        return $resultPage;
         
     }
 

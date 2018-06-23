@@ -123,11 +123,12 @@ class JobList extends Template
     }
 
     /**
-     * Prepares layout for default pagination
+     * Prepares layout for default pagination and sets title
      * @return $this
      */
     protected function _prepareLayout()
     {
+        $this->pageConfig->getTitle()->set(__('Careers'));
         parent::_prepareLayout();
 
         if ($this->getJobs()) {
@@ -195,4 +196,5 @@ class JobList extends Template
     {
         return $this->storeManager->getStore()->getId();
     }
+
 }
